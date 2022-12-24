@@ -21,9 +21,10 @@ if __name__ == "__main__":
 
     if len(sys.argv) != 2:
         logger.error("Usage: HelloSpark <filename>")
-        sys.exit(-1)
+        # sys.exit(-1)
 
-    linesRDD = sc.textFile(sys.argv[1])
+    # linesRDD = sc.textFile(sys.argv[1])
+    linesRDD=sc.textFile("data/sample.csv")
     partitionedRDD = linesRDD.repartition(2)
 
     colsRDD = partitionedRDD.map(lambda line: line.replace('"', '').split(","))
